@@ -45,18 +45,68 @@ struct Data
     int
     size() const { return data.size(); }
 
-    //operator[] is 1-indexed
+    //operator[] is 0-indexed
     value_type&
-    operator[](int n) { return data[n]; }
+    operator[](int n);
     value_type
-    operator[](int n) const { return data[n]; }
+    operator[](int n) const;
 
     //operator() is 1-indexed
     value_type&
-    operator()(int n) { return data[n-1]; }
+    operator()(int n);
     value_type
-    operator()(int n) const { return data[n-1]; }
+    operator()(int n) const;
+
     };
+
+//
+// Implementations
+//
+
+//operator[] is 0-indexed
+inline
+value_type& Data::
+operator[](int n) 
+    { 
+#ifdef DEBUG
+    return data[n]; 
+#else
+    return data.at(n); 
+#endif
+    }
+
+inline
+value_type Data::
+operator[](int n) const 
+    { 
+#ifdef DEBUG
+    return data[n]; 
+#else
+    return data.at(n); 
+#endif
+    }
+
+//operator() is 1-indexed
+inline
+value_type& Data::
+operator()(int n) 
+    { 
+#ifdef DEBUG
+    return data[n-1]; 
+#else
+    return data.at(n-1); 
+#endif
+    }
+inline
+value_type Data::
+operator()(int n) const 
+    { 
+#ifdef DEBUG
+    return data[n-1]; 
+#else
+    return data.at(n-1); 
+#endif
+    }
 
 } //namespace mllib
 
