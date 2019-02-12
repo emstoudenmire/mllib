@@ -64,8 +64,8 @@ struct Data
 //
 
 //operator[] is 0-indexed
-inline
-value_type& Data::
+template<typename v, int NL>
+v& Data<v,NL>::
 operator[](int n) 
     { 
 #ifdef DEBUG
@@ -75,8 +75,8 @@ operator[](int n)
 #endif
     }
 
-inline
-value_type Data::
+template<typename v, int NL>
+v Data<v,NL>::
 operator[](int n) const 
     { 
 #ifdef DEBUG
@@ -87,8 +87,8 @@ operator[](int n) const
     }
 
 //operator() is 1-indexed
-inline
-value_type& Data::
+template<typename v, int NL>
+v& Data<v,NL>::
 operator()(int n) 
     { 
 #ifdef DEBUG
@@ -97,8 +97,8 @@ operator()(int n)
     return data.at(n-1); 
 #endif
     }
-inline
-value_type Data::
+template<typename v, int NL>
+v Data<v,NL>::
 operator()(int n) const 
     { 
 #ifdef DEBUG
